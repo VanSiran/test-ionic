@@ -1,4 +1,4 @@
-import { HTTP } from '@ionic-native/http';
+// import { HTTP } from '@ionic-native/http';
 import { NavController, LoadingController, ToastController } from 'ionic-angular';
 import { LoginPage } from '../pages/login/login';
 
@@ -27,9 +27,9 @@ function rpc(controllers,
               model: string,
               method: string,
               args,
-              kwargs: object,
+              kwargs,
               callbacks) {
-  this.storage.get('userinfo')
+  controllers.storage.get('userinfo')
     .then(
       userinfo => {
         userinfo = userinfo || { "session_id": false, "login": false, "password": false, "uid": false }

@@ -1,32 +1,48 @@
 <ion-header>
   <ion-navbar>
     <ion-title>操作</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal" (click)="scan_tap()">
+        <ion-icon name="qr-scanner"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>津电备品管理</h2>
   <ion-grid>
-  <ion-row>
-    <ion-col>
-      1 of 2
-    </ion-col>
-    <ion-col>
-      2 of 2
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col>
-      1 of 3
-    </ion-col>
-    <ion-col>
-      2 of 3
-    </ion-col>
-    <ion-col>
-      3 of 3
-    </ion-col>
-  </ion-row>
-</ion-grid>
-  <button ion-button block color="primary" (click)="clear_data()">clear data</button>
+    <ion-row>
+      <ion-col>
+        <ion-card (click)="cangku_tap()">
+          <ion-card-header>
+            当前仓库
+          </ion-card-header>
+          <ion-card-content>
+            {{ current_cangku }}
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-card (click)="ruku_tap()">
+          <!-- <ion-icon name="log-in"></ion-icon> -->
+          <img src="../../assets/imgs/ruku-icon.png"/>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <!-- <ion-card>
+          <ion-icon name="log-in"></ion-icon>
+        </ion-card> -->
+      </ion-col>
+      <ion-col>
+        <!-- <ion-card>
+          <ion-icon name="log-in"></ion-icon>
+        </ion-card> -->
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <button ion-button small block color="danger" (click)="logout_tap()">退出登陆</button>
 
 </ion-content>
