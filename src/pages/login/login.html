@@ -13,20 +13,40 @@
 </ion-header> -->
 
 <ion-content padding>
-<ion-list>
 
-  <ion-item>
-    <ion-label fixed>Username</ion-label>
-    <ion-input type="text" [(ngModel)]="login_text"></ion-input>
-  </ion-item>
+<ion-grid>
+  <ion-row>
+    <ion-col col-12>
+      <ion-card>
+        <img src='../../assets/imgs/login.png'/>
+      </ion-card>
+    </ion-col>
+  </ion-row>
 
+  <ion-row>
+    <ion-col col-12>
+      <ion-list>
+        <ion-item>
+          <ion-label floating>手机</ion-label>
+          <ion-input #login type="text" (keyup)="login_text_change($event)" [(ngModel)]="login_text"></ion-input>
+           <!-- -->
+        </ion-item>
 
-  <ion-item>
-    <ion-label fixed>Password</ion-label>
-    <ion-input type="password" [(ngModel)]="pass_text"></ion-input>
-  </ion-item>
+        <ion-item>
+          <ion-label floating>密码</ion-label>
+          <ion-input #password (keyup)="password_text_change($event)" type="password" [(ngModel)]="password_text"></ion-input>
+          <!-- -->
+        </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
 
-  <button ion-button block color="primary" (click)="login()">Login</button>
+  <ion-row>
+    <ion-col col-12>
+      <button ion-button block color="primary" (click)="login_tap()">登陆</button>
+    </ion-col>
+  </ion-row>
 
-</ion-list>
+</ion-grid>
+
 </ion-content>

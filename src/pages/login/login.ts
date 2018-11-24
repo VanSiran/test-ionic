@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams,
   LoadingController, ToastController } from 'ionic-angular';
 
@@ -23,7 +23,9 @@ import { Storage } from '@ionic/storage';
 })
 export class LoginPage {
   login_text: string = ''
-  pass_text: string = ''
+  password_text: string = ''
+  @ViewChild('login') login_box;
+  @ViewChild('password') password_box;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private storage: Storage, public loadingCtrl: LoadingController,
@@ -49,14 +51,23 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
 
-  login () {
-    this.wms_login(this.login_text, this.pass_text)
+  login_tap () {
+    // console.log('sdasdsda')
+    this.wms_login(this.login_text, this.password_text)
   }
 
   wms_login (login, password, no_main=false) {
     if (!login || !password) {
-      this.presentToast('输入用户名和密码')
-      return
+      // this.presentToast('输入用户名和密码')
+      if (!login) {
+        this.login_box.setFocus()
+        return
+      }
+      if (!password) {
+        this.password_box.setFocus()
+        return
+      }
+      // return
     }
     let loading = this.loadingCtrl.create({
       content: ''
@@ -83,7 +94,7 @@ export class LoginPage {
             password: password,
             uid: res.data.result.uid,
           })
-          if (no_main === false || no_main === '0') {
+          if (no_main == false) {
             this.navCtrl.push(TabsPage, {}, {animate: false})
           }
         } else {
@@ -111,10 +122,22 @@ export class LoginPage {
     });
 
     loading.present();
-
     setTimeout(() => {
       loading.dismiss();
     }, 120000);
   }
 
+  login_text_change(event) {
+    // this.login_text = event.target.value
+    if (event.code == 'Enter') {
+      this.password_box.setFocus()
+    }
+  }
+
+  password_text_change(event) {
+    // this.password_text = event.target.value
+    if (event.code == 'Enter') {
+      this.login_tap()
+    }
+  }
 }
