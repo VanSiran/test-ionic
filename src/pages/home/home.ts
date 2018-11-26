@@ -14,8 +14,7 @@ import { LoginPage } from '../login/login'
 export class HomePage {
   current_cangku: string = ''
 
-  constructor(public navCtrl: NavController, private storage: Storage,
-    /*private barcodeScanner: BarcodeScanner,*/ private http: HTTP,
+  constructor(public navCtrl: NavController, private storage: Storage, private http: HTTP,
     private loadingCtrl: LoadingController, private toastCtrl: ToastController) {
 
   }

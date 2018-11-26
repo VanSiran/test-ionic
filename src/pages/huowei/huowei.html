@@ -1,0 +1,79 @@
+<!--
+  Generated template for the HuoweiPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>入库 : 选择货位</ion-title>
+  </ion-navbar>
+  <ion-toolbar no-border-top>
+    <ion-title>{{ beijianext_title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+  <!-- <ion-grid>
+    <ion-row>
+      <ion-col col-12>{{ beijianext_title }} 入库</ion-col>
+    </ion-row>
+  </ion-grid> -->
+
+  <ion-list *ngIf="find_result.length > 0 || !show_create">
+    <ion-list-header>
+      选择存放的货位
+    </ion-list-header>
+    <button ion-item *ngFor="let item of find_result; let i = index" (click)="next_step(i)">
+      <h3>{{ item.cangku[1].split(" / ").reverse()[0] }}</h3>
+      <h2>{{ item.bianma }}</h2>
+    </button>
+    <button ion-item outline *ngIf="!show_create" (click)="show_create=true">
+      新建货位
+    </button>
+  </ion-list>
+
+  <ion-list *ngIf="show_create">
+    <ion-list-header>
+      <span ion-button clear color="dark">
+        新建货位
+      </span>
+      <span ion-button color="danger" *ngIf="find_result.length > 0"
+        (click)="show_create=false">
+        取消
+      </span>
+      <span ion-button color="primary" (click)="huowei_format_setting()">
+        格式
+      </span>
+    </ion-list-header>
+    <ion-item *ngFor="let item of placeholder_types; let i = index">
+      <div *ngIf="item == '@数字'">
+        <p>数字位{{i+1}}</p>
+        <!-- <ion-label stacked>数字位{{i+1}}</ion-label> -->
+        <!-- <button ion-button (click)="num_minus(i)">&nbsp;&nbsp;-&nbsp;&nbsp;</button> -->
+        <button ion-button (click)="num_minus(i)">
+          <ion-icon name="md-arrow-dropleft">
+          </ion-icon>
+        </button>
+        <h1 style="display:inline;">&nbsp;{{placeholder_value[i]}}&nbsp;</h1>
+        <!-- <button ion-button (click)="num_plus(i)">&nbsp;&nbsp;+&nbsp;&nbsp;</button> -->
+        <button ion-button (click)="num_plus(i)">
+          <ion-icon name="md-arrow-dropright">
+          </ion-icon>
+        </button>
+      </div>
+      <ion-label *ngIf="item != '@数字'" stacked>文字位{{i+1}}</ion-label>
+      <!-- <p *ngIf="item != '@数字'">文字位{{i+1}}</p> -->
+      <ion-input *ngIf="item != '@数字'" type="text" (input)="text_input()" [(ngModel)]="placeholder_value[i]"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>新增货位名称</ion-label>
+      <ion-input type="text" [(ngModel)]="gen_huowei" (keyup.Enter)="create_huowei()"></ion-input>
+      <button ion-button outline item-end (click)="create_huowei()">
+        确认添加
+      </button>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -53,6 +53,7 @@ function rpc(controllers,
               'kwargs': kwargs
             }
           }
+          console.log('data send: ', JSON.stringify(data))
           controllers.http.post(HOST + 'web/dataset/call_kw', data, {
             'content-type': 'application/json',
             'cookie': "session_id=" + userinfo.session_id
@@ -69,11 +70,6 @@ function rpc(controllers,
                   default_session_expire(controllers.navCtrl)
                 }
               } else {
-                if (callbacks.session_expire) {
-                  callbacks.session_expire()
-                } else {
-                  default_session_expire(controllers.navCtrl)
-                }
                 if (callbacks.server_error) {
                   callbacks.server_error(res)
                 } else {
