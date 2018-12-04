@@ -1,0 +1,76 @@
+<!--
+  Generated template for the ConfirmRukuPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>入库 : 确认</ion-title>
+  </ion-navbar>
+  <!-- <ion-toolbar no-border-top>
+    <ion-title>{{ beijianext_title }}</ion-title>
+  </ion-toolbar> -->
+
+</ion-header>
+
+
+<ion-content padding *ngIf="!ruku_complete">
+  <ion-list>
+    <ion-item>
+      <h3>备件名称</h3>
+      <h2>{{ruku_info.beijian || '未填写'}}</h2>
+    </ion-item>
+    <ion-item>
+      <h3>备件型号</h3>
+      <h2>{{ruku_info.beijianext || '未填写'}}</h2>
+    </ion-item>
+    <ion-item>
+      <h3>仓库</h3>
+      <h2>{{ruku_info.cangku_name || '未填写'}}</h2>
+    </ion-item>
+    <ion-item>
+      <h3>货位</h3>
+      <h2>{{ruku_info.huoweiname || '未填写'}}</h2>
+    </ion-item>
+    <ion-item>
+      <h3>生产日期</h3>
+      <h2>{{ruku_info.shengchanriqi || '未填写'}}</h2>
+    </ion-item>
+    <ion-item *ngIf="ruku_info.jiancebaojing">
+      <h3>上次检测日期</h3>
+      <h2>{{ruku_info.shangcijiance || '未填写'}}</h2>
+    </ion-item>
+    <ion-item>
+      <h3>厂家</h3>
+      <h2>{{ruku_info.changjia_name || '未填写'}}</h2>
+    </ion-item>
+    <ion-item>
+      <h3>厂编号</h3>
+      <h2>{{ruku_info.changbianhao || '未填写'}}</h2>
+    </ion-item>
+    <ion-item>
+      <h3>批号</h3>
+      <h2>{{ruku_info.pihao || '未填写'}}</h2>
+    </ion-item>
+  </ion-list>
+
+  <div text-center *ngIf="!ruku_complete">
+    <button ion-button round (click)="confirm_btn()">信息无误，入库</button>
+  </div>
+
+  <ion-grid *ngIf="ruku_complete" text-center>
+    <ion-row>
+      <ion-col col-12>
+        <h1>入库完成</h1>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12>
+        <button ion-button round (click)="print_btn()">打印条码</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

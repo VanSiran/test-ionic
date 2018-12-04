@@ -4,15 +4,14 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { LoginPage } from '../pages/login/login';
-import { RukuPage } from '../pages/ruku/ruku';
-import { HuoweiPage } from '../pages/huowei/huowei';
+import { ConfirmRukuPage } from '../pages/confirm-ruku/confirm-ruku';
 // import { TabsPage } from '../pages/tabs/tabs';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  // rootPage:any = HuoweiPage
+  // rootPage:any = ConfirmRukuPage
   // rootParams: any = {id:6,beijianext:'ZPW.CE'}
   rootPage:any = LoginPage;
 

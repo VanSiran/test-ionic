@@ -6,6 +6,7 @@ const HOST = "http://47.95.8.185/"
 
 function default_session_expire(navCtrl: NavController) {
   // TODO: 过期重登陆逻辑修正
+  // TODO: 用HTTP模块管理cookie
   // wx.redirectTo({
   //   url: '/pages/login/login?no_main=1',###!!!
   // })
@@ -13,7 +14,7 @@ function default_session_expire(navCtrl: NavController) {
 }
 
 function default_server_error(res, toastCtrl: ToastController) {
-  console.log("API response error: ", res)
+  console.log("API response error: ", JSON.stringify(res))
   let toast = toastCtrl.create({
     message: res.data.error.message + " (" + res.data.error.code + ")",
     duration: 1500,

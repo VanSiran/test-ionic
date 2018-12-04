@@ -26,7 +26,7 @@
     <ion-list-header>
       选择存放的货位
     </ion-list-header>
-    <button ion-item *ngFor="let item of find_result; let i = index" (click)="next_step(i)">
+    <button ion-item *ngFor="let item of find_result" (click)="next_step(item.id,item.bianma,item.cangku[1])">
       <h3>{{ item.cangku[1].split(" / ").reverse()[0] }}</h3>
       <h2>{{ item.bianma }}</h2>
     </button>

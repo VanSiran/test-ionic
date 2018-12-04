@@ -84,5 +84,8 @@
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <plugin name="cordova-plugin-advanced-http" spec="2.0.1" />
     <plugin name="cordova-gmv-barcode-scanner" spec="1.2.2" />
+    <plugin name="cordova-plugin-ble-central" spec="1.2.2">
+        <variable name="BLUETOOTH_USAGE_DESCRIPTION" value=" " />
+    </plugin>
     <engine name="ios" spec="4.5.5" />
 </widget>

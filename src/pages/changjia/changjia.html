@@ -1,0 +1,69 @@
+<!--
+  Generated template for the ChangjiaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>厂家选择</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list *ngIf="find_result.length > 0 || !show_create"
+    radio-group [(ngModel)]="selected_index" (ionChange)="radio_checked($event)">
+    <ion-list-header>
+      选择厂家
+    </ion-list-header>
+    <ion-item>
+      <ion-label>
+        <h2>不填写厂家</h2>
+      </ion-label>
+      <ion-radio value="none" checked="true"></ion-radio>
+    </ion-item>
+    <ion-item *ngFor="let item of find_result;let i = index">
+      <!-- //(click)="next_step(item.id)" -->
+      <ion-label>
+        <h3>{{ item.city }}</h3>
+        <h2>{{ item.name }}</h2>
+      </ion-label>
+      <ion-radio [value]="i"></ion-radio>
+    </ion-item>
+    <button ion-item outline *ngIf="!show_create && allow_create" (click)="show_create=true">
+      新建厂家
+    </button>
+  </ion-list>
+
+  <ion-card *ngIf="show_create && !allow_create">
+    <h1>没有厂家，请通知管理员添加厂家</h1>
+  </ion-card>
+
+  <ion-list *ngIf="show_create && allow_create">
+    <ion-list-header>
+      <span ion-button clear color="dark">
+        新建厂家
+      </span>
+      <span ion-button color="danger" *ngIf="find_result.length > 0"
+        (click)="show_create=false">
+        取消
+      </span>
+    </ion-list-header>
+    <ion-item>
+      <ion-label stacked>厂家名称</ion-label>
+      <ion-input type="text" [(ngModel)]="new_changjia_name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>厂家城市</ion-label>
+      <ion-input type="text" [(ngModel)]="new_changjia_city" (keyup.Enter)="create_changjia()"></ion-input>
+      <button ion-button outline item-end (click)="create_changjia()">
+        确认添加
+      </button>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

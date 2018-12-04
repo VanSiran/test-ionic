@@ -4,6 +4,9 @@ import { IonicPage, NavController, NavParams, LoadingController,
 import { rpc } from '../../libs/api';
 import { Storage } from '@ionic/storage';
 import { HTTP } from '@ionic-native/http';
+
+import { RukuqitaPage } from '../rukuqita/rukuqita';
+
 /**
  * Generated class for the HuoweiPage page.
  *
@@ -32,6 +35,7 @@ export class HuoweiPage {
   }
 
   ionViewDidLoad() {
+
     this.beijianext = this.navParams.get('id')
     this.beijianext_title = this.navParams.get('beijianext')
     this.refresh_huowei_list()
@@ -126,6 +130,27 @@ export class HuoweiPage {
     prompt.present();
   }
 
+  next_step(i,huoweiname,cangkuname) {
+    let param = this.navParams.data
+    let self = this
+    if (param.mode == 'shouhuo') {
+      rpc(this, 'wms.geti', 'phone_shouhuo', [param.geti_id, i], {}, {
+        success() {
+          self.presentToast('收货完成！')
+          self.navCtrl.pop()
+          if (param.callback) {
+            param.callback()
+          }
+        }
+      })
+      return
+    }
+    param["huowei_id"] = i
+    param["cangku_name"] = cangkuname
+    param["huoweiname"] = huoweiname
+    this.navCtrl.push(RukuqitaPage, param, {animate: true})
+  }
+
   presentToast(message: string) {
     let toast = this.toastCtrl.create({
       message: message,
@@ -137,14 +162,12 @@ export class HuoweiPage {
   }
 
   num_minus(i) {
-    // this.placeholder_value[i]--
     this.placeholder_value[i] = this.placeholder_value[i] == 0 ? 0 : this.placeholder_value[i] - 1
     this.gen_huowei_str()
   }
 
   num_plus(i) {
     this.placeholder_value[i]++
-    // this.placeholder_value[i] == 0 ? this.placeholder_value[i] : this.placeholder_value[i]+1
     this.gen_huowei_str()
   }
 

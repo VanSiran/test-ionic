@@ -10,7 +10,7 @@
     <ion-title>入库 : 选择备品型号</ion-title>
   </ion-navbar>
   <ion-toolbar no-border-top>
-    <ion-segment [(ngModel)]="input_mode">
+    <ion-segment [(ngModel)]="input_mode" (ionChange)="mode_change($event)">
       <ion-segment-button value="recognize">
         拍照识别型号
       </ion-segment-button>
@@ -24,16 +24,27 @@
 
 <ion-content padding>
 
-
   <div [ngSwitch]="input_mode" >
-    <!-- (keyup)="password_text_change($event)"  -->
     <ion-list *ngSwitchCase="'recognize'">
-      <!-- <ion-item>
-        <ion-thumbnail item-start>
-          <img src="img/thumbnail-puppy-1.jpg">
-        </ion-thumbnail>
-        <h2>Ruby</h2>
-      </ion-item> -->
+      <div id="cam_placeholder" style="height:187px;"></div>
+      <div text-center>
+        <button ion-button round primary (click)="photo_tap()">拍照</button>
+        <button ion-button round primary (click)="torch_tap()">灯光</button>
+      </div>
+      <ion-list *ngIf="ocr_result.length > 0">
+        <ion-list-header>
+          选择所需的识别行，并进行编辑
+        </ion-list-header>
+        <ion-item *ngFor="let item of ocr_result; let i = index">
+          <ion-input type="text" [(ngModel)]="ocr_result[i]"></ion-input>
+          <!-- <h2>{{ item[0].beijianext }}</h2> -->
+          <button ion-button outline large item-end (click)="search_beijianext(i)">
+            <ion-icon name="search"></ion-icon>
+          </button>
+        </ion-item>
+      </ion-list>
+      <!-- <ion-input type="text" [(ngModel)]="photo_quality"></ion-input> -->
+      <!-- <img id="my-img" src=''></img> -->
     </ion-list>
 
     <ion-list *ngSwitchCase="'input'">

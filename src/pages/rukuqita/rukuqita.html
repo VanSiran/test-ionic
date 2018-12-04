@@ -1,0 +1,62 @@
+<!--
+  Generated template for the RukuqitaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>入库 : 其他信息</ion-title>
+  </ion-navbar>
+  <ion-toolbar no-border-top>
+    <ion-title>{{ beijianext_title }}</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+    <button ion-item (click)="select_changjia()">
+      厂家
+      <ion-note item-end>
+      {{changjia_name}}
+      </ion-note>
+    </button>
+
+    <ion-item>
+      <ion-label>厂编号</ion-label>
+      <ion-input type="text" [(ngModel)]="changbianhao_text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="dark">生产日期</ion-label>
+      <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="YYYY MM DD"
+        [(ngModel)]="shengchanriqi_date"></ion-datetime>
+    </ion-item>
+
+    <ion-item *ngIf="need_test">
+      <ion-label color="dark">上次检测日期</ion-label>
+      <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="YYYY MM DD"
+        [(ngModel)]="shangcijiance_date"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>批号</ion-label>
+      <ion-input type="text" [(ngModel)]="pihao_text"></ion-input>
+    </ion-item>
+
+    <!-- <ion-item>
+      <ion-label>同信息数</ion-label>
+      <ion-input #password (keyup)="password_text_change($event)" type="password" [(ngModel)]="password_text"></ion-input>
+    </ion-item> -->
+
+  </ion-list>
+
+  <div text-center>
+    <button ion-button round (click)="confirm_btn()">确认入库</button>
+  </div>
+
+</ion-content>

@@ -10,8 +10,14 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { RukuPage } from '../pages/ruku/ruku';
 import { HuoweiPage } from '../pages/huowei/huowei';
+import { RukuqitaPage } from '../pages/rukuqita/rukuqita';
+import { ChangjiaPage } from '../pages/changjia/changjia';
+import { LishiPage } from '../pages/lishi/lishi';
+import { ConfirmRukuPage } from '../pages/confirm-ruku/confirm-ruku';
+import { GetiDetailPage } from '../pages/geti-detail/geti-detail';
 
 import { StatusBar } from '@ionic-native/status-bar';
+import { BLE } from '@ionic-native/ble';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { IonicStorageModule } from '@ionic/storage';
 
@@ -32,6 +38,11 @@ import { CameraPreview } from '@ionic-native/camera-preview';
     LoginPage,
     RukuPage,
     HuoweiPage,
+    RukuqitaPage,
+    ChangjiaPage,
+    ConfirmRukuPage,
+    GetiDetailPage,
+    LishiPage,
   ],
   imports: [
     BrowserModule,
@@ -49,11 +60,16 @@ import { CameraPreview } from '@ionic-native/camera-preview';
     LoginPage,
     RukuPage,
     HuoweiPage,
+    RukuqitaPage,
+    ChangjiaPage,
+    ConfirmRukuPage,
+    GetiDetailPage,
+    LishiPage,
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    HTTP,
+    HTTP, BLE,
     CameraPreview,
     // BarcodeScanner,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

@@ -1,16 +1,24 @@
 <ion-header>
   <ion-navbar>
     <ion-title>操作</ion-title>
-    <ion-buttons end>
+    <!-- <ion-buttons end>
       <button ion-button icon-only color="royal" (click)="scan_tap()">
         <ion-icon name="qr-scanner"></ion-icon>
       </button>
-    </ion-buttons>
+    </ion-buttons> -->
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <ion-grid>
+    <ion-row>
+      <ion-col col-12>
+        <ion-card>
+          <img src='../../assets/imgs/login.png'/>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
     <ion-row>
       <ion-col>
         <ion-card (click)="cangku_tap()">
@@ -26,23 +34,33 @@
 
     <ion-row>
       <ion-col>
-        <ion-card (click)="ruku_tap()">
-          <!-- <ion-icon name="log-in"></ion-icon> -->
+        <ion-card text-center (click)="ruku_tap()">
           <img src="../../assets/imgs/ruku-icon.png"/>
+          入库
         </ion-card>
       </ion-col>
       <ion-col>
-        <!-- <ion-card>
-          <ion-icon name="log-in"></ion-icon>
-        </ion-card> -->
+        <ion-card text-center (click)="scan_tap()">
+          <img src="../../assets/imgs/scan-search-icon.png"/>
+          扫描查询
+        </ion-card>
       </ion-col>
       <ion-col>
-        <!-- <ion-card>
-          <ion-icon name="log-in"></ion-icon>
-        </ion-card> -->
+        <ion-card text-center (click)="shouhuo_tap()">
+          <img src="../../assets/imgs/scan-ruku-icon.png"/>
+          扫描收货
+        </ion-card>
       </ion-col>
     </ion-row>
+
+    <ion-row>
+      <ion-col col-12>
+        <ion-card style="background-color:red">
+          <button ion-button small full color="danger" (click)="logout_tap()">退出登陆</button>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
   </ion-grid>
-  <button ion-button small block color="danger" (click)="logout_tap()">退出登陆</button>
 
 </ion-content>
