@@ -20,7 +20,7 @@ import { HuoweiPage } from '../huowei/huowei'
   templateUrl: 'ruku.html',
 })
 export class RukuPage {
-  input_mode: string = 'recognize'
+  input_mode: string = 'input'
   beijianext_input = {'manual':''}
   find_result = []
   torch_status = false
@@ -34,7 +34,7 @@ export class RukuPage {
   }
 
   ionViewDidLoad() {
-    this.bd_ocr_init()
+    // this.bd_ocr_init()
     const elem = document.getElementById('camera-top')
     const ypos = elem.offsetTop + elem.offsetHeight
     console.log("位置", elem.offsetTop, elem.offsetHeight)

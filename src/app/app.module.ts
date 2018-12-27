@@ -15,6 +15,8 @@ import { ChangjiaPage } from '../pages/changjia/changjia';
 import { LishiPage } from '../pages/lishi/lishi';
 import { ConfirmRukuPage } from '../pages/confirm-ruku/confirm-ruku';
 import { GetiDetailPage } from '../pages/geti-detail/geti-detail';
+import { GetiListPage } from '../pages/geti-list/geti-list';
+import { SearchPage } from '../pages/search/search';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { BLE } from '@ionic-native/ble';
@@ -43,6 +45,8 @@ import { CameraPreview } from '@ionic-native/camera-preview';
     ConfirmRukuPage,
     GetiDetailPage,
     LishiPage,
+    SearchPage,
+    GetiListPage,
   ],
   imports: [
     BrowserModule,
@@ -65,6 +69,8 @@ import { CameraPreview } from '@ionic-native/camera-preview';
     ConfirmRukuPage,
     GetiDetailPage,
     LishiPage,
+    SearchPage,
+    GetiListPage,
   ],
   providers: [
     StatusBar,

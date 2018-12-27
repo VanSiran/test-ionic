@@ -16,8 +16,8 @@
 </ion-header>
 
 
-<ion-content padding *ngIf="!ruku_complete">
-  <ion-list>
+<ion-content>
+  <ion-list padding *ngIf="!ruku_complete">
     <ion-item>
       <h3>备件名称</h3>
       <h2>{{ruku_info.beijian || '未填写'}}</h2>
@@ -60,10 +60,17 @@
     <button ion-button round (click)="confirm_btn()">信息无误，入库</button>
   </div>
 
-  <ion-grid *ngIf="ruku_complete" text-center>
+  <div text-center padding *ngIf="ruku_complete">
+    <h1>入库完成</h1>
+    <img src="../../assets/imgs/success.png">
+    <button ion-button round (click)="print_btn()">打印条码</button>
+    <button ion-button round (click)="reset_ble()">重置蓝牙</button>
+  </div>
+  <!-- <ion-grid *ngIf="ruku_complete" text-center>
     <ion-row>
       <ion-col col-12>
         <h1>入库完成</h1>
+        <img src="../../assets/imgs/success.png">
       </ion-col>
     </ion-row>
     <ion-row>
@@ -71,6 +78,6 @@
         <button ion-button round (click)="print_btn()">打印条码</button>
       </ion-col>
     </ion-row>
-  </ion-grid>
+  </ion-grid> -->
 
 </ion-content>

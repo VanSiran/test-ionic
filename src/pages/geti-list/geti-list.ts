@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams, LoadingController,
 import { rpc } from '../../libs/api';
 import { Storage } from '@ionic/storage';
 import { HTTP } from '@ionic-native/http';
+import { GetiDetailPage } from '../geti-detail/geti-detail'
 
 /**
  * Generated class for the LishiPage page.
@@ -14,10 +15,10 @@ import { HTTP } from '@ionic-native/http';
 
 @IonicPage()
 @Component({
-  selector: 'page-lishi',
-  templateUrl: 'lishi.html',
+  selector: 'page-geti-list',
+  templateUrl: 'geti-list.html',
 })
-export class LishiPage {
+export class GetiListPage {
   find_result = []
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
@@ -30,14 +31,20 @@ export class LishiPage {
     // TODO: 时区问题
     let self = this
     console.log('ionViewDidLoad GetiDetailPage')
-    let geti_id = this.navParams.data.geti_id
-    rpc(this, "wms.lishijilu", "search_read",
-      [[['geti_id','=',geti_id]], ['xinxi', 'create_date', 'create_uid']],
-      {order: 'create_date asc'}, {
-        success(res){
-          self.find_result = res.data.result
-        }
+    let beijianext_id = this.navParams.data.id
+    this.storage.get('cangku').then(cangku => {
+      rpc(this, "wms.geti", "search_read",
+        [[['beijianext','=',beijianext_id], ['cangku', '=', cangku], ['zhuangtai', 'in', ['zaiku', 'daijiance', 'daibaofei']]], ['xuliehao', 'cangku']],
+        {}, {
+          success(res){
+            self.find_result = res.data.result
+          }
+        })
       })
+  }
+
+  show_detail (res) {
+    this.navCtrl.push(GetiDetailPage, {code: res, mode: 'chaxun'}, {animate: true})
   }
 
   presentToast(message: string) {

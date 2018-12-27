@@ -1,0 +1,55 @@
+<!--
+  Generated template for the SearchPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>备件搜索</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card (click)="cangku_tap()">
+          <ion-card-header>
+            当前仓库
+          </ion-card-header>
+          <ion-card-content>
+            {{ current_cangku }}
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list>
+    <ion-item>
+      <ion-label stacked>备件型号</ion-label>
+      <ion-input type="text" [(ngModel)]="beijianext_input['manual']" clearInput
+        (keyup)="input_change('manual', $event)" placeholder="输入型号 (可模糊搜索)">
+      </ion-input>
+      <button ion-button outline large item-end (click)="search_beijianext('manual')">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="find_result.length > 0">
+    <ion-list-header>
+      选择准确的备件型号
+    </ion-list-header>
+    <button ion-item *ngFor="let item of find_result; let i = index" (click)="next_step(i)">
+      <h3>{{ item[0].beijian }}</h3>
+      <h2>{{ item[0].beijianext }}</h2>
+    </button>
+  </ion-list>
+
+</ion-content>
